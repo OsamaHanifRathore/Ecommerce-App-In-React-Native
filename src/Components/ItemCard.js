@@ -1,8 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, ImageBackground} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {blueTheme, fontColorOfProducts, screenWidth} from '../utils/constant';
-import {createStackNavigator} from '@react-navigation/stack';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { blueTheme, fontColorOfProducts, screenWidth } from '../utils/constant';
 
 export default function ItemCard({
   imgSource,
@@ -12,7 +11,7 @@ export default function ItemCard({
   index,
   data,
 }) {
-  console.log(data[index]);
+  
 
   const image = {uri: imgSource};
   return (
@@ -48,6 +47,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 3,
     borderTopRightRadius: 3,
     backgroundColor: '#fafafa',
+    alignSelf:'flex-start',
   },
 
   ProductName: {

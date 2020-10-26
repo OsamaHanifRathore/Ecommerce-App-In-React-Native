@@ -4,13 +4,12 @@ import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import FormButton from '../Components/FormButton';
 import TextInputField from '../Components/TextInputField';
 import {blueTheme, screenHeight, screenWidth} from '../utils/constant';
-import {AuthContext} from '../Context';
 import {Divider} from 'react-native-paper';
 import {color} from 'react-native-reanimated';
 import SocialAccountButton from '../Components/SocialAccountButton';
 
 export default function SignUp({navigation}) {
-  const {signUp} = React.useContext(AuthContext);
+
   return (
     <ScrollView>
       <View style={Styles.container}>
@@ -33,7 +32,7 @@ export default function SignUp({navigation}) {
           labelValue="password"
           secureTextEntry
         />
-        <FormButton buttonText="Create an Account" onTouch={() => signUp()} />
+        <FormButton buttonText="Create an Account" onTouch={()=> navigation.push('BottomNavigationComponent')} />
         <View style={Styles.createAccoutText}>
           <Text style={Styles.textofAccout}>Already have an account ? </Text>
           <TouchableOpacity onPress={() => navigation.push('Login')}>

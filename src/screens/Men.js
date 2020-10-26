@@ -1,10 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView, Button} from 'react-native';
-
-import CommonAppBar from '../Components/CommonAppBar';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import ItemCard from '../Components/ItemCard';
 import Data from '../data/studentlist.json';
-import {blueTheme, screenWidth} from '../utils/constant';
+import { blueTheme, screenWidth } from '../utils/constant';
 
 export default function Mens({navigation}) {
   var data = Data.shopdata.filter((hat) => hat.title == 'Mens');
@@ -20,9 +18,9 @@ export default function Mens({navigation}) {
 
   return (
     <View style={styles.mainContainer}>
-      <CommonAppBar title="MENS" nav={navigation} />
+    
       <ScrollView
-        style={{marginBottom: 68}}
+        
         showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           {dataList.map((value, idx) => (

@@ -19,10 +19,7 @@ export default function Womens({navigation}) {
   console.log(dataList);
   return (
     <View style={styles.mainContainer}>
-      <CommonAppBar title="WOMENS" nav={navigation} />
-      <ScrollView
-        style={{marginBottom: 68}}
-        showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           {dataList.map((value, idx) => (
             <ItemCard

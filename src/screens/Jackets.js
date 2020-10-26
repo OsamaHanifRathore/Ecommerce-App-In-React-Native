@@ -20,9 +20,7 @@ export default function Jackets({navigation}) {
 
   return (
     <View style={styles.mainContainer}>
-      <CommonAppBar title="JACKETS" nav={navigation} />
       <ScrollView
-        style={{marginBottom: 68}}
         showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           {dataList.map((value, idx) => (

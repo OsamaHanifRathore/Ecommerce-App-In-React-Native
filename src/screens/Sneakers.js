@@ -19,10 +19,7 @@ export default function Sneakers({navigation}) {
   console.log(dataList);
   return (
     <View style={styles.mainContainer}>
-      <CommonAppBar title="SNEAKERS" nav={navigation} />
-      <ScrollView
-        style={{marginBottom: 68}}
-        showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           {dataList.map((value, idx) => (
             <ItemCard

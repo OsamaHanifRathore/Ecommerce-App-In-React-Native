@@ -1,72 +1,91 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, Button} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {blueTheme, screenWidth} from '../utils/constant';
 import {connect} from 'react-redux';
-import { addCart } from '../actions/cartcontrol';
+import {addCart} from '../actions/cartcontrol';
 
-
-
- function ProductScreen({route, navigation , reduceDispatcher}) {
+function ProductScreen({route, navigation, reduceDispatcher}) {
   const {image, name, price, index, data} = route.params;
   return (
     <View style={Styles.container}>
-      <ScrollView>
+      <View style={{flex: 0.7}}>
         <Image source={image} style={{height: 400, width: '100%'}} />
-        <Text style={Styles.priceText}>${price}</Text>
-        <Text style={Styles.title}>{name}</Text>
-        <Text style={Styles.desc}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum
-        </Text>
-        <Button title="Add To Cart"
-        onPress={()=>{reduceDispatcher.add(data[index])}}
-        />
-      </ScrollView>
-      <Icon
-        name="arrow-circle-left"
-        size={40}
-        style={Styles.icon}
-        color="black"
-        onPress={() => navigation.pop()}
-      />
+        <View style={Styles.tag}>
+          <Text style={{color: 'white', marginLeft: 10, fontSize: 12}}>
+            -20%
+          </Text>
+        </View>
+      </View>
+      <View
+        style={{
+          flex: 0.2,
+          flexDirection: 'row',
+          marginHorizontal: 10,
+          justifyContent: 'space-between',
+        }}>
+        <View style={{flexDirection: 'column'}}>
+          <Text style={Styles.priceText}>${price}</Text>
+          <Text style={Styles.title}>{name}</Text>
+        </View>
+        <Icon name="heart" size={22} />
+      </View>
+
+      <View
+        style={{
+          flex: 0.1,
+          backgroundColor: blueTheme,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <TouchableOpacity onPress={()=>{reduceDispatcher.add(data[index])}}>
+          <View style={{flexDirection: 'row'}}>
+            <Icon
+              name="shopping-bag"
+              size={22}
+              color="white"
+              style={{marginRight: 10}}
+            />
+            <Text style={{fontSize: 22, color: 'white', fontWeight: '400'}}>
+              Add to shopping cart
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
-
 
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
     width: screenWidth,
+    flexDirection: 'column',
   },
 
   priceText: {
     fontSize: 24,
     color: blueTheme,
     marginLeft: 10,
-    fontWeight: 'bold',
-    marginVertical: 20,
-  },
-  icon: {
-    position: 'absolute',
-    opacity: 0.5,
-    top: 10,
-    left: 10,
-  },
-  title: {
-    fontSize: 25,
-    fontWeight: '400',
+    fontWeight: '300',
   },
   title: {
     fontSize: 18,
-    fontWeight: '200',
+    fontWeight: 'bold',
+    marginBottom: 30,
+  },
+  tag: {
+    height: 40,
+    width: 40,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    backgroundColor: blueTheme,
+    borderBottomLeftRadius: 40,
+    borderTopLeftRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   //   firstScroll: {
@@ -99,7 +118,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchtoProps = (dispatch) => {
-
   return {
     reduceDispatcher: {
       add: (itemobject) => dispatch(addCart(itemobject)),
@@ -107,5 +125,4 @@ const mapDispatchtoProps = (dispatch) => {
   };
 };
 
-
-export default connect(mapStateToProps,mapDispatchtoProps)(ProductScreen);
+export default connect(mapStateToProps, mapDispatchtoProps)(ProductScreen);

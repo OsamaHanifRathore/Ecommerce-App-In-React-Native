@@ -4,13 +4,11 @@ import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import FormButton from '../Components/FormButton';
 import TextInputField from '../Components/TextInputField';
 import {blueTheme, screenHeight, screenWidth} from '../utils/constant';
-import {AuthContext} from '../Context';
 import {Divider} from 'react-native-paper';
-import {color} from 'react-native-reanimated';
 import SocialAccountButton from '../Components/SocialAccountButton';
+import { StackActions ,CommonActions} from '@react-navigation/native';
 
 export default function Login({navigation}) {
-  const {signIn} = React.useContext(AuthContext);
   return (
     <ScrollView>
       <View style={Styles.container}>
@@ -29,7 +27,7 @@ export default function Login({navigation}) {
         />
         <Text style={Styles.forgetPassword}>Forget Password?</Text>
 
-        <FormButton buttonText="Login" onTouch={() => signIn()} />
+        <FormButton buttonText="Login" onTouch={()=> navigation.dispatch(CommonActions.reset({index:0,routes:[{name:'BottomNavigationComponent'}]}))} />
         <Divider style={Styles.divider} />
         <View style={Styles.createAccoutText}>
           <Text style={Styles.textofAccout}>Don't have an accout yet? </Text>

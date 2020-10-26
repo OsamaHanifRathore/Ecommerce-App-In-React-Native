@@ -1,7 +1,6 @@
-import {act} from 'react-test-renderer';
 import {
   ADD_TO_CART,
-  DELETE_FROM_CART,
+  DELETE_FROM_CART
 } from '../actions/types';
 
 const initialState = {

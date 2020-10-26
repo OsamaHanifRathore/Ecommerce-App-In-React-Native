@@ -4,10 +4,10 @@ import FormButton from '../Components/FormButton'
 import {AuthContext} from '../Context'
 
 export default function Account() {
-    const {signOut} = React.useContext(AuthContext);
+
     return (
         <View style={Styles.container}>
-            <FormButton buttonText = "Sign Out" onTouch={()=>signOut()}/>
+            <FormButton buttonText = "Sign Out" onTouch={()=>{}}/>
         </View>
     )
 }

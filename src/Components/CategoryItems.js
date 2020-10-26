@@ -11,8 +11,6 @@ import {screenWidth} from '../utils/constant';
 
 export default function CategoryItems({imgSource, titleText, onTap}) {
   const image = {uri: imgSource};
-  console.log(screenWidth);
-  console.log(screenWidth / 2);
   return (
     <TouchableOpacity style={styles.container} onPress={onTap}>
       <ImageBackground source={image} style={styles.image} />
